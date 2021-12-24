@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GL Pokemon</string>
+    <string name="title_activity_pokemon">Gotta catch \'em all</string>
+    <string name="reveal_pokemon">Reveal Pokemon</string>
+    <string name="loading">Loading…</string>
+    <string name="stats">Stats</string>
+    <string name="stat">%s : %d</string>
+    <string name="moves">Moves</string>
+</resources>

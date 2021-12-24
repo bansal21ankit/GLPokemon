@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/layout_padding">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pokemon_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/pokemon_name_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/view_padding"
+            android:textSize="@dimen/pokemon_name_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/pokemon_refresh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pokemon Name" />
+
+        <ImageView
+            android:id="@+id/pokemon_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="Refresh"
+            app:layout_constraintBottom_toBottomOf="@id/pokemon_name_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/pokemon_name_txt"
+            app:srcCompat="@drawable/ic_refresh" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="pokemon_name_txt,pokemon_refresh" />
+
+        <ImageView
+            android:id="@+id/pokemon_front_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="Pokemon Front Image"
+            app:layout_constraintEnd_toStartOf="@+id/pokemon_back_img"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+        <ImageView
+            android:id="@+id/pokemon_back_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="Pokemon Back Image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/pokemon_front_img"
+            app:layout_constraintTop_toTopOf="@id/pokemon_front_img"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="pokemon_front_img,pokemon_back_img" />
+
+        <TextView
+            android:id="@+id/pokemon_stats_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/view_padding"
+            android:padding="@dimen/view_padding"
+            android:text="@string/stats"
+            android:textSize="@dimen/list_title_size"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toStartOf="@id/pokemon_moves_label"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pokemon_stats_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/pokemon_stats_label"
+            app:layout_constraintStart_toStartOf="@id/pokemon_stats_label"
+            app:layout_constraintTop_toBottomOf="@id/pokemon_stats_label" />
+
+        <TextView
+            android:id="@+id/pokemon_moves_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/view_padding"
+            android:padding="@dimen/view_padding"
+            android:text="@string/moves"
+            android:textSize="@dimen/list_title_size"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/pokemon_stats_label"
+            app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pokemon_moves_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/pokemon_moves_label"
+            app:layout_constraintStart_toStartOf="@id/pokemon_moves_label"
+            app:layout_constraintTop_toBottomOf="@id/pokemon_moves_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/loading_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_padding"
+            android:text="@string/loading"
+            app:layout_constraintEnd_toEndOf="@id/progress"
+            app:layout_constraintStart_toStartOf="@id/progress"
+            app:layout_constraintTop_toBottomOf="@id/progress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
